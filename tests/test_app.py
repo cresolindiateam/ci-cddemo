@@ -11,7 +11,7 @@ class TestSpamClassifier(unittest.TestCase):
         with open("../models/spam_model.pkl", "rb") as f:
             model = pickle.load(f)
 
-        self.assertEqual(classify_text("You've won a prize!", model), "Spam") #It will pass text if come spam then pass
+        self.assertEqual(classify_text("You've won a prize !", model), "Spam") #It will pass text if come spam then pass
         self.assertEqual(classify_text("Hello, how are you?", model), "Not Spam")
 
 if __name__ == "__main__":
