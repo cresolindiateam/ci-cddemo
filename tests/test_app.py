@@ -1,18 +1,18 @@
-# tests/test_app.py
 import sys
 sys.path.append('../app')
 
-from main import classify_text #Importing classify Function from main.py file
+import unittest
+from main import classify_text #Import this function from main.p file
 import pickle
 
-def test_classify_text():
-    with open("../models/spam_model.pkl", "rb") as f:
-        model = pickle.load(f)
+class TestSpamClassifier(unittest.TestCase):
 
-    assert classify_text("You've won a prize!", model) == "Spam"
-    #Python's assert statement allows you to write sanity checks in your code. 
-    #It will pass this statement if is it spam then it will pass otherwise throw error
-    
-    assert classify_text("Hello, how are you?", model) == "Not Spam"
+    def test_classify_text(self):
+        with open("../models/spam_model.pkl", "rb") as f:
+            model = pickle.load(f)
 
-test_classify_text()
+        self.assertEqual(classify_text("You've won a prize!", model), "Spam") #It will pass text if come spam then pass
+        self.assertEqual(classify_text("Hello, how are you?", model), "Not Spam")
+
+if __name__ == "__main__":
+    unittest.main()
