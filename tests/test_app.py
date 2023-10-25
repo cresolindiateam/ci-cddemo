@@ -1,5 +1,5 @@
 import sys
-sys.path.append('../app')
+sys.path.append('../code')
 
 import unittest
 from main import classify_text #Import this function from main.p file
