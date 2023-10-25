@@ -1,4 +1,3 @@
-# dummy_model.py
 import pickle
 
 class DummyModel:
